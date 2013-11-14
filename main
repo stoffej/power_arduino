@@ -21,7 +21,7 @@ long pulseCount = 0;
 unsigned long pulseTime,lastTime;
 
 //power and energy
-double power, elapsedkWh;
+double power_val, elapsedkWh;
 //int  power, elapsedkWh;
 //Number of pulses per wh - found or set on the meter.
 int ppwh = 1; //1000 pulses/kwh = 1 pulse per wh
@@ -134,9 +134,9 @@ void XML_response(EthernetClient cl)
     cl.print("<inputs>");
     // read analog pin A2
     //analog_val = analogRead(2);
-    cl.print("<analog>");
-    cl.print(power);
-    cl.print("</analog>");
+    cl.print("<power>");
+    cl.print(power_val);
+    cl.print("</power>");
     cl.print("</inputs>");
 }
 
@@ -190,14 +190,14 @@ void onPulse()
   pulseCount++;
 
 //Calculate power
-  power = (3600000000.0 / (pulseTime - lastTime))/ppwh;
+  power_val = (3600000000 / (pulseTime - lastTime))/ppwh;
   
   //Find kwh elapsed
-  elapsedkWh = (1.0*pulseCount/(ppwh*1000)); //multiply by 1000 to pulses per wh to kwh convert wh to kwh
+  elapsedkWh = (pulseCount/(ppwh*1000)); //multiply by 1000 to pulses per wh to kwh convert wh to kwh
 
 //Print the values.
   Serial.print("stoffe:");
-  Serial.print(power,4);
+  Serial.print(power_val);
 
  // Serial.println(elapsedkWh,3);
 }
