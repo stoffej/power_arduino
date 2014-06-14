@@ -25,7 +25,7 @@ unsigned long power_val, elapsedkWh;
 //int  power, elapsedkWh;
 //Number of pulses per wh - found or set on the meter.
 int ppwh = 1; //1000 pulses/kwh = 1 pulse per wh
-
+µ
 void setup()
 {
   Serial.begin(115200);
