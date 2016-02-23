@@ -4,7 +4,7 @@ kopplingslist inkommande från detektorn
 
 orange = 5V
 
-oragne/vit = NC
+orange/vit = NC
 
 blå = pulser
 
